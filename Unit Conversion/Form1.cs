@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace Unit_Conversion
 {
+      
     public partial class Form1 : Form
     {
         public Form1()
@@ -26,39 +27,65 @@ namespace Unit_Conversion
         {
             int amountConverted = Convert.ToInt32(textBox2.Text);
             int ConversionChoice = Convert.ToInt32(textBox1.Text);
-            double endConversion = ConvertNumber(ConversionChoice, amountConverted);
+            double Answer1 = InchtoCm(ConversionChoice, amountConverted);
+            double Answer2 = FeettoCm(ConversionChoice, amountConverted);
+            double Answer3 = YardtoMeters(ConversionChoice, amountConverted);
+            double Answer4 = MilestoKm(ConversionChoice, amountConverted);
 
-            outputLabel.Text = $"{endConversion}";
+            if (ConversionChoice == 1)
+            {
+                outputLabel.Text = $"{amountConverted} inches to {Answer1} CM";
+            }
+            else if (ConversionChoice == 2)
+            {
+                outputLabel.Text = $"{amountConverted} inches to {Answer2} CM";
+            }
+            else if (ConversionChoice == 3)
+            {
+                outputLabel.Text = $"{amountConverted} Yards to {Answer3} Meters";
+            }
+            else if (ConversionChoice == 4)
+            {
+                outputLabel.Text = $"{amountConverted} Miles to {Answer4} KM";
+            }
         }
-        public double ConvertNumber(int val1, int val2)
+        public double InchtoCm(int val1, int val2)
         {
             double convertAmount = 0;
-            string length;
-            string endLength;
+           
             if (val1 == 1)
             {
                 convertAmount = val2 * 2.54;
-                length = "Inches";
-                endLength = "CM";
             }
-            else if (val1 == 2)
+            return convertAmount;
+        }
+        public double FeettoCm( int val1, int val2)
+        {
+            double convertAmount = 0;
+
+            if (val1 == 2)
             {
-               
                 convertAmount = val2 * 30.48;
-                length = "Feet";
-                endLength = "CM";
             }
-            else if (val1 == 3)
+            return convertAmount;
+        }
+        public double YardtoMeters(int val1, int val2)
+        {
+            double convertAmount = 0;
+
+            if (val1 == 3)
             {
-               convertAmount = val2 * 0.91;
-                length = "Yards";
-                endLength = "Meters";
+                convertAmount = val2 * 0.91;
             }
-            else if (val1 == 4)
+            return convertAmount;
+        }
+        public double MilestoKm(int val1, int val2)
+        {
+            double convertAmount = 0;
+
+            if (val1 == 4)
             {
                 convertAmount = val2 * 1.6;
-                length = "Miles";
-                endLength = "km";
             }
             return convertAmount;
         }
