@@ -26,16 +26,41 @@ namespace Unit_Conversion
         {
             int amountConverted = Convert.ToInt32(textBox2.Text);
             int ConversionChoice = Convert.ToInt32(textBox1.Text);
-            ConvertNumber(ConversionChoice, amountConverted);
+            double endConversion = ConvertNumber(ConversionChoice, amountConverted);
+
+            outputLabel.Text = $"{endConversion}";
         }
-        public void ConvertNumber(int val1, int val2)
+        public double ConvertNumber(int val1, int val2)
         {
-            double inchConvert = val2 * 2.54;
+            double convertAmount = 0;
+            string length;
+            string endLength;
             if (val1 == 1)
             {
-                outputLabel.Text = $"{inchConvert}";
+                convertAmount = val2 * 2.54;
+                length = "Inches";
+                endLength = "CM";
             }
-
+            else if (val1 == 2)
+            {
+               
+                convertAmount = val2 * 30.48;
+                length = "Feet";
+                endLength = "CM";
+            }
+            else if (val1 == 3)
+            {
+               convertAmount = val2 * 0.91;
+                length = "Yards";
+                endLength = "Meters";
+            }
+            else if (val1 == 4)
+            {
+                convertAmount = val2 * 1.6;
+                length = "Miles";
+                endLength = "km";
+            }
+            return convertAmount;
         }
     }
 }
